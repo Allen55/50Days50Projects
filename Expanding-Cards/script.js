@@ -12,3 +12,11 @@ function removeActiveClasses() {
     panel.classList.remove('active');
   });
 }
+
+const hey = () => {
+  return this;
+};
+
+function yelpThis() {
+  console.log('hi');
+}
