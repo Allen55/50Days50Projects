@@ -1,5 +1,13 @@
-const API_URL =
+const API_URL_MAIN =
   'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=a84d48fb8e622877bfcb153493418741&page=1';
+const API_URL_DRAMA =
+  'https://api.themoviedb.org/3/discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10&api_key=a84d48fb8e622877bfcb153493418741';
+const API_URL_IN_THEATERS =
+  'https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22&api_key=a84d48fb8e622877bfcb153493418741';
+const API_URL_KIDS =
+  'https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=a84d48fb8e622877bfcb153493418741';
+const API_URL_RATED_R =
+  'https://api.themoviedb.org/3/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=a84d48fb8e622877bfcb153493418741';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 const SEARCH_API =
@@ -8,9 +16,34 @@ const SEARCH_API =
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 const main = document.getElementById('main');
+const navDrama = document.getElementById('dramas');
+const inTheaters = document.getElementById('in-theaters');
+const kids = document.getElementById('kids');
+const ratedR = document.getElementById('rated-r');
 
 //Get initial movies
-getMovies(API_URL);
+
+getMovies(API_URL_MAIN);
+
+//NAV ITEMS
+navDrama.addEventListener('click', (e) => {
+  e.preventDefault();
+  getMovies(API_URL_DRAMA);
+});
+
+inTheaters.addEventListener('click', (e) => {
+  e.preventDefault();
+  getMovies(API_URL_IN_THEATERS);
+});
+
+kids.addEventListener('click', (e) => {
+  e.preventDefault();
+  getMovies(API_URL_KIDS);
+});
+ratedR.addEventListener('click', (e) => {
+  e.preventDefault();
+  getMovies(API_URL_RATED_R);
+});
 
 async function getMovies(url) {
   const res = await fetch(url);
