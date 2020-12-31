@@ -24,10 +24,17 @@ body {
   background-color: #fff;
   border: 0;
   font-size: 15px;
+  font-weight: 800;
   padding: 15px;
   height: 50px;
   width: 50px;
   transition: width 0.3s ease;
+}
+
+.input::placeholder {
+  color: black;
+  font-weight: 800;
+  font-size: 20px;
 }
 
 .btn {
@@ -53,5 +60,5 @@ input:focus {
 }
 
 .search.active .btn {
-  transform: translatex(198px);
+  transform: translateX(198px);
 }
