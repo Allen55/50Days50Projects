@@ -8,7 +8,6 @@ const API_URL_KIDS =
   'https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=a84d48fb8e622877bfcb153493418741';
 const API_URL_RATED_R =
   'https://api.themoviedb.org/3/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=a84d48fb8e622877bfcb153493418741';
-
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 const SEARCH_API =
   'https://api.themoviedb.org/3/search/movie?api_key=a84d48fb8e622877bfcb153493418741&query="';
@@ -22,20 +21,17 @@ const kids = document.getElementById('kids');
 const ratedR = document.getElementById('rated-r');
 
 //Get initial movies
-
 getMovies(API_URL_MAIN);
 
-//NAV ITEMS
+//Navigation Options
 navDrama.addEventListener('click', (e) => {
   e.preventDefault();
   getMovies(API_URL_DRAMA);
 });
-
 inTheaters.addEventListener('click', (e) => {
   e.preventDefault();
   getMovies(API_URL_IN_THEATERS);
 });
-
 kids.addEventListener('click', (e) => {
   e.preventDefault();
   getMovies(API_URL_KIDS);
@@ -45,6 +41,7 @@ ratedR.addEventListener('click', (e) => {
   getMovies(API_URL_RATED_R);
 });
 
+//API Fetch
 async function getMovies(url) {
   const res = await fetch(url);
   const data = await res.json();
@@ -52,6 +49,7 @@ async function getMovies(url) {
   showMovies(data.results);
 }
 
+//Displaying Movies
 function showMovies(movies) {
   main.innerHTML = '';
 
@@ -76,6 +74,7 @@ function showMovies(movies) {
   });
 }
 
+//Rating
 function getClassByRate(vote) {
   if (vote >= 8) {
     return 'green';
@@ -86,6 +85,7 @@ function getClassByRate(vote) {
   }
 }
 
+//Search form
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
